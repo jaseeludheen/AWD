@@ -15,11 +15,14 @@ class Command(BaseCommand):
 
         # add multiple data
         dataset = [
-            {'roll_number': '1002', 'name': 'Alice Smith', 'age': 22},
-            {'roll_number': '1003', 'name': 'Bob Johnson', 'age': 21},
-            {'roll_number': '1004', 'name': 'Charlie Brown', 'age': 23},
-            {'roll_number': '1005', 'name': 'Diana Prince', 'age': 24},
+            {'roll_number': '1010', 'name': 'Anna', 'age': 22},
+            {'roll_number': '1011', 'name': 'Joseph', 'age': 21},
+            {'roll_number': '1009', 'name': 'Marley Brown', 'age': 23},
+            {'roll_number': '1006', 'name': 'Jaseel', 'age': 24},
         ]
+
+        """
+
         for data in dataset:
 #            print(data['name'])
             
@@ -29,4 +32,19 @@ class Command(BaseCommand):
         # print success message
         self.stdout.write(self.style.SUCCESS('Data inserted successfully!'))
 
+        """
+
+
+        for data in dataset:
+
+            roll_no = data['roll_number']
+            existing_record = Student.objects.filter(roll_number=roll_no).exists()
+
+            if not existing_record:
+                Student.objects.create(roll_number=data['roll_number'],
+                                   name=data['name'],
+                                   age=data['age'])
+                self.stdout.write(self.style.SUCCESS(f'Data inserted successfully for {data['name']}.'))
+            else:
+                self.stdout.write(self.style.WARNING(f'Student with roll number {roll_no} already exists!'))
 
