@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 <label for="model_name">Select Database Table</label>
-                <select name="model_name" class="form-control">
+                <select name="model_name" class="form-control" required>
                     <option value="" disabled selected>Select</option>
                     {% for model in custom_models %}
                         <option value="{{ model }}" >{{ model }}</option>
@@ -38,6 +38,8 @@
             </div>
 
             <input type="submit" value="Import data" class="btn btn-primary">
+            
+            {% include 'dataentry/alerts.html' %}
 
         
         </form>
