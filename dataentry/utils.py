@@ -2,7 +2,7 @@ from django.apps import apps
 
 
 def get_all_custom_models():
-    default_model = ['LogEntry', 'Permission', 'Group', 'ContentType', 'Session', 'User' ]
+    default_model = ['LogEntry', 'Permission', 'Group', 'ContentType', 'Session', 'User','Upload' ]
 
     # try to get all models 
     custom_models = []
