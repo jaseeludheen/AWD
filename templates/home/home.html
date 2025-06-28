@@ -10,8 +10,13 @@
         <h2>Home Page</h2>
 
 
+        <div>
+            <a href="{% url 'import_data' %}" class="btn btn-primary">Import Data</a>
+        </div>
 
-        <a href="{% url 'import_data' %}" class="btn btn-primary">Import Data</a>
+        <div>
+            <a href="{% url 'celery_test' %}" class="btn btn-primary">Celery Test</a>
+        </div>
 
     </div>
 </body>

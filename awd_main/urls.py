@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name='home'), 
     path('', include('dataentry.urls')),  # Include the URLs from the dataentry app
-    path('celery-test/', views.celery_test),
+    path('celery-test/', views.celery_test , name='celery_test'),  # URL for the Celery test view
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)                             
