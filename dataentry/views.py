@@ -4,7 +4,8 @@ from uploads.models import Upload
 from django.conf import settings
 from django.core.management import call_command  # trigger commands from Django management commands
 from django.contrib import messages  # for displaying messages in templates
-
+from .tasks import import_data_task  # Celery task for importing data
+from dataentry.utils import check_csv_errors  # function to check for CSV errors
 
 # Create your views here.
 
@@ -23,16 +24,30 @@ def import_data(request):
 #        print(base_url)
 
         file_path = base_url + relative_path
-        print(file_path)
+#        print(file_path)
 
-
-        # trigger the import data command 
+        # check for the csv errors
         try:
-            call_command('importdatafromcsv', file_path, model_name)
-            messages.success(request, 'Data imported successfully!')  # success message
+            check_csv_errors(file_path, model_name)
         except Exception as e:
-            messages.error(request, str(e))  # error message if something goes wrong    
+            messages.error(request, str(e))  # if there are any errors in the CSV file, show the error message to the user
+            return redirect('import_data')  # redirect to the same page if there are errors
 
+
+        # handle the import data task here
+        import_data_task.delay(file_path, model_name)  # call the Celery task to import data asynchronously passing the file path and model name
+
+    
+        # trigger the import data command  ( )
+#        try:
+#            call_command('importdatafromcsv', file_path, model_name)
+#            messages.success(request, 'Data imported successfully!')  # success message
+#        except Exception as e:
+#            messages.error(request, str(e))  # error message if something goes wrong    
+
+
+        # show the message to the user
+        messages.success(request, 'Your data is being imported, You will be notified once it is done.')  # success message
 
 
         return redirect('import_data')  # redirect to the same page after uploading the file
