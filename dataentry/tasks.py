@@ -5,6 +5,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings   #  from email
 import ssl
 from django.core.mail import send_mail
+from .utils import send_email_notification
 
 
 @app.task     # This decorator registers the function as a Celery task # Celery task
@@ -23,7 +24,10 @@ def import_data_task(file_path, model_name):
     except Exception as e:
         raise e
     # notify the user by email
-
+    mail_subject = 'Import Data Completed'
+    message = 'Your data import has been successful'
+    to_email = settings.DEFAULT_TO_EMAIL
+    send_email_notification(mail_subject, message, to_email)
     return ('Data imported successfully!')
 
 
@@ -54,3 +58,12 @@ def send_test_email_task():
     
 
     return 'Test email sent successfully!'  # return a success message after sending the email
+
+
+@app.task
+def send_email():
+    mail_subject = 'Test Email from Automate with Django'
+    message = 'This is a test email sent from Automate with Django project'
+    to_email = settings.DEFAULT_TO_EMAIL  
+    send_email_notification(mail_subject, message, to_email)
+    return 'Email sent successfully'
