@@ -147,8 +147,13 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 
 # Email configuration
 EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)  # cast=int to convert the string value to an integer
+EMAIL_PORT = config('EMAIL_PORT')  # cast=int to convert the string value to an integer
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
+
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
