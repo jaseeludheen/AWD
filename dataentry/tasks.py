@@ -5,7 +5,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings   #  from email
 import ssl
 from django.core.mail import send_mail
-from .utils import send_email_notification
+from .utils import send_email_notification, generate_csv_file
 
 
 @app.task     # This decorator registers the function as a Celery task # Celery task
@@ -67,3 +67,27 @@ def send_email():
     to_email = settings.DEFAULT_TO_EMAIL  
     send_email_notification(mail_subject, message, to_email)
     return 'Email sent successfully'
+
+
+
+
+@app.task
+def export_data_task(model_name):
+    try :
+        # trigger call command
+        call_command('exportdata', model_name)
+    except Exception as e:
+            raise e
+    
+    file_path = generate_csv_file(model_name)
+#    print('file_path==>', file_path)
+        
+    # send email with attachment
+    mail_subject = 'Export Data Successful'
+    message = 'Export Data Successful. Please find the Attachment'
+    to_email = settings.DEFAULT_TO_EMAIL
+    
+    
+
+    send_email_notification(mail_subject, message, to_email, attachment=file_path)
+    return 'Export Data task executed successfully.'

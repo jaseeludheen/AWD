@@ -4,7 +4,7 @@ from uploads.models import Upload
 from django.conf import settings
 from django.core.management import call_command  # trigger commands from Django management commands
 from django.contrib import messages  # for displaying messages in templates
-from .tasks import import_data_task  # Celery task for importing data
+from .tasks import import_data_task,export_data_task  # Celery task - importing data, exporting data
 from dataentry.utils import check_csv_errors  # function to check for CSV errors
 
 # Create your views here.
@@ -60,3 +60,34 @@ def import_data(request):
             'custom_models': custom_models,
         }
     return render(request, 'dataentry/importdata.html', context)
+
+
+
+def export_data(request):
+    if request.method == 'POST':
+        model_name = request.POST.get('model_name')
+
+        # call the export data task
+        export_data_task.delay(model_name)
+
+        # show the message to the user
+        messages.success(request, 'Your data is being exported, You will be notified once it is done.')  # success message
+        return redirect('export_data')
+
+        """
+        try :
+            # trigger call command
+            call_command('exportdata', model_name)
+        except Exception as e:
+            raise e
+        
+        messages.success(request, 'Your data is exported')
+        return redirect('export_data')
+        """
+
+    else:
+        custom_models = get_all_custom_models() 
+        context = {
+            'custom_models': custom_models,
+        }
+    return render(request, 'dataentry/exportdata.html', context)
