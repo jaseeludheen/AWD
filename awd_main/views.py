@@ -6,7 +6,7 @@ from dataentry.tasks import celery_test_task, send_test_email_task
 
 
 def home(request):
-    return render(request, 'home/home.html')
+    return render(request, 'home/home_page.html')
 
 
 def celery_test(request):

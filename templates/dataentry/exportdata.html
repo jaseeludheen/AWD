@@ -1,30 +1,8 @@
+{% extends 'home/base.html' %}
 
-
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Export Data</title>
-
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!--jquery-->
-<script src="{% static 'js/custom.js' %}"></script>
-
-</head>
-<body>
-
-    <div class="container"> 
-        <h3 class="text-center">Export Data From Database Tables</h3>
+    {% block content %}
+    <div class="container mt-5 shadow-lg custom-bg"> 
+        <h3 class="heading text-center pt-1">Export Data From Database Tables</h3>
 
         <form action="{% url 'export_data' %}" method="post"  style="max-width: 600px; margin: auto; padding-top: 50px;" >
             {% csrf_token %}
@@ -40,15 +18,15 @@
                 </select>
             </div>
 
-            <input type="submit" value="Export data" class="btn btn-primary">
+            
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Export data" class="btn btn-custom">
+            </div>
             
             {% include 'dataentry/alerts.html' %}
 
         
         </form>
     </div>
-    
-</body>
-</html>
-
+    {% endblock %}
 
