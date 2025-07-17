@@ -3,7 +3,7 @@
 
     {% block content %}
     <div class="container mt-5 shadow-lg custom-bg"> 
-        <h3 class="heading text-center pt-1">Import Data To Database Tables</h3>
+        <h3 class="sub-heading text-center pt-1">Import Data To Database Tables</h3>
 
         <form action="{% url 'import_data' %}" method="post" enctype="multipart/form-data" style="max-width: 600px; margin: auto; padding-top: 50px;" >
             {% csrf_token %}
@@ -26,11 +26,10 @@
                 <input type="submit" value="Import data" class="btn btn-custom">
             </div>
             
+        </form>  
+         
+        {% include 'dataentry/alerts.html' %}
             
-            {% include 'dataentry/alerts.html' %}
-
-        
-        </form>
     </div>
     
     {% endblock  %}

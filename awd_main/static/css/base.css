@@ -1,16 +1,44 @@
 body {
-    background-color: #1c2331;
+    background-color: #e5e8ed;
     font-family: 'Segoe UI', sans-serif;
 
 }
 
-.text, .heading {
+/* #background-color: #1c2331; */
+
+
+.text {
     color: #cbd5e1;
 }
 
 header {
     background-color: #1a2e44;
     color: #cbd5e1;
+}
+
+
+
+.heading {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #cbd5e1;
+}
+
+.navbar {
+    background-color: #1a2e44;
+    color: #cbd5e1;
+    padding: 10px;
+}
+
+.navbar-brand.custom-heading {
+    color: #cbd5e1;
+    font-weight: bold;
+}
+
+.sub-heading {
+    font-size: 1.5rem;
 }
 
 footer {
@@ -51,18 +79,46 @@ footer {
 
 input[type="file"].form-control,
 select.form-control {
-  background-color: #111827;   
-  color: #f1f5f9;              
-  border: 1px solid #374151;   
-  border-radius: 5px;
-  padding: 10px;
+    background-color: #111827;
+    color: #f1f5f9;
+    border: 1px solid #374151;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 input[type="file"].form-control:focus,
 select.form-control:focus {
-  outline: none;
-  border-color: #3b82f6;       
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  background-color: #1f2937;   
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    background-color: #1f2937;
+}
+
+
+
+.form-box {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    /* background-color: #1f2937; */
+    color: #010b15;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.btn-muted {
+    background-color: #374151;
+    color: #cbd5e1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-muted:hover {
+    background-color: #4b5563;
 }
 

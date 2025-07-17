@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dataentry',
     'uploads',
+    'crispy_forms',
+    "crispy_bootstrap5",
     
 ]
 
@@ -160,4 +162,10 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+# Crispy Forms configuration
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 

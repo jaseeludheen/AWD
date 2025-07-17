@@ -16,19 +16,39 @@
         crossorigin="anonymous"></script>
 
     <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script src="{% static 'js/custom.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
 
 </head>
 
 <body>
-
     <!-- header -->
-    <header class="py-3">
-        <h1 class="text-center">Automate The Boring Stuff With Django</h1>
-    </header>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand custom-heading" href="{% url 'home' %}">Automate With Django</a>
 
+                {% if user.is_authenticated %}
+                <!-- show logout button -->
+                <div>
+                    Logged in as: <b>{{ user }}</b>
+                    &nbsp;<a href="#" class="float-right btn btn-outline-danger">Logout</a>
+                </div>
+                {% else %}
+                <div>
+                    <a href="{% url 'login' %}" class="float-right text-decoration-none text-dark">Login</a>
+                    &nbsp;<a href="{% url 'register' %}" class="float-right btn btn-success">Register</a>
+                </div>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
 
 
     {% block content %}
@@ -38,7 +58,8 @@
 
     <!-- footer -->
     <footer class="text-center">
-        <p>© 2025 Automate With Django | <a href="/login" class="text-white">Login</a> | <a href="/register" class="text-white">Register</a></p>
+        <p>© 2025 Automate With Django | <a href="/login" class="text-white">Login</a> | <a href="/register"
+                class="text-white">Register</a></p>
     </footer>
 </body>
 

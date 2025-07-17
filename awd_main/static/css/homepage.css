@@ -8,6 +8,13 @@ header {
     color: #cbd5e1;
 }
 
+.heading {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 footer {
     background-color: #1a2e44;
     color: #cbd5e1;
