@@ -2,10 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import time
 from dataentry.tasks import celery_test_task, send_test_email_task
-from .forms import RegistrationForm 
-from django.contrib import messages
+from .forms import LoginForm, RegistrationForm 
+from django.contrib import messages, auth
 from django.shortcuts import redirect
-
 
 
 
@@ -39,7 +38,7 @@ def register(request):
             context = {
                 'form': form,
             }
-            return render(request, 'user/register1.html' , context)
+            return render(request, 'user/register.html' , context)
 
   
     else:
@@ -47,11 +46,34 @@ def register(request):
         context ={
             'form': form,
         }
-    return render(request, 'user/register1.html', context)
+    return render(request, 'user/register.html', context)
 
 
 
 def login(request):
-    return render(request, 'user/login.html')
+    if request.method == 'POST':
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('home')
+            else:
+                messages.error(request, 'Invalid Credentials')
+                return render(request, 'user/login.html', {'form': form})
+        else:
+            messages.error(request, 'Invalid form submission')
+            return render(request, 'user/login.html', {'form': form})
+    else:
+        form = LoginForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'user/login.html', context)
 
 
+def logout(request):
+    auth.logout(request)
+    return redirect('home')

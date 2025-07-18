@@ -30,6 +30,7 @@ urlpatterns = [
     path('email-test/', views.email_test, name='email_test'),  # URL for the email test view
     path('register/', views.register, name='register'),  # URL for the registration view)
     path('login/', views.login, name='login'),  # URL for the login view
+    path('logout/', views.logout, name='logout'),  # URL for the logout view
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)                             
