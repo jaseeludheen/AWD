@@ -25,12 +25,18 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name='home'), 
-    path('dataentry/', include('dataentry.urls')),  # Include the URLs from the dataentry app
+    
+    # Include the URLs from the dataentry app
+    path('dataentry/', include('dataentry.urls')),
+
     path('celery-test/', views.celery_test , name='celery_test'),  # URL for the Celery test view
     path('email-test/', views.email_test, name='email_test'),  # URL for the email test view
     path('register/', views.register, name='register'),  # URL for the registration view)
     path('login/', views.login, name='login'),  # URL for the login view
     path('logout/', views.logout, name='logout'),  # URL for the logout view
+
+    # Include the URLs from the emails app
+    path('emails/', include('emails.urls')),  
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)                             
