@@ -4,6 +4,7 @@ from django.contrib import messages
 from .utils import send_email_notification
 from django.conf import settings
 from .models import Subscribers
+from .task import send_email_task
 
 
 
@@ -37,7 +38,10 @@ def send_email(request):
             else: 
                 attachment = None
 
-            send_email_notification(mail_subject, message, to_email, attachment)
+#           send_email_notification(mail_subject, message, to_email, attachment)
+            # Handover email sending task to Celery
+            send_email_task.delay(mail_subject, message, to_email, attachment) 
+
 
             # display success message
             messages.success(request, 'Email sent successfully!')
