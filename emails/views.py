@@ -3,7 +3,7 @@ from .forms import EmailForm
 from django.contrib import messages
 from .utils import send_email_notification
 from django.conf import settings
-from .models import Subscriber, Email
+from .models import Subscriber, Email, Sent
 from .task import send_email_task
 from django.db.models import Sum
 
@@ -73,16 +73,19 @@ def track_open(request):
 def track_dashboard(request):
 #   emails = Email.objects.all()
     emails = Email.objects.all().annotate(total_sent=Sum('sent__total_sent')) # ('sent__total_sent') sent is related name in Sent model, total_sent is field name in Sent model, totat_sent is the new field name for each email instance
+    
     context = {
-        'emails': emails
+        'emails': emails,
     }
     return render(request, 'emails/track_dashboard.html', context)
 
 
 def track_stats(request, pk):
     email = get_object_or_404(Email, pk=pk)
-    email
+    sent = Sent.objects.get(email=email)
+
     context ={
-        'email': email
+        'email': email,
+        'total_sent': sent.total_sent,
     }
     return render (request, 'emails/track_stats.html', context)
