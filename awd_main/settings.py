@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',default=False, cast=bool)  # cast=bool reason: to convert the string value to a boolean
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # * means any website will run for this application
 
 
 # Application definition
@@ -197,3 +197,11 @@ ANYMAIL = {
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 #DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
+
+
+
+
+
+CSRF_TRUSTED_ORIGINS = [config('CSRF_TRUSTED_ORIGINS')]  # add your ngrok url here
+
+BASE_URL = config('BASE_URL')  # add your ngrok url here
