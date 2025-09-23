@@ -3,6 +3,7 @@ import time
 from django.conf import settings 
 from django.core.mail import EmailMessage
 from .models import Email, Sent, EmailTracking, Subscriber
+from bs4 import BeautifulSoup
 
 
 def send_email_notification(mail_subject, message, to_email, attachment=None, email_id=None):  # attachment=None , set default 
@@ -30,6 +31,14 @@ def send_email_notification(mail_subject, message, to_email, attachment=None, em
             print('click_tracking_url ==>',click_tracking_url)
 
             # Search for the link in email body
+            
+            soup = BeautifulSoup(message, 'html.parser') #html parser is analying the html content in email body
+            """
+            for a in soup.find_all('a', href=True): # find all anchor tags with href attribute , 
+                print(a['href'])
+            """
+            # List comprehension method (above code)
+            urls = [ a['href'] for a in soup.find_all('a', href=True) ]
 
             # If there are links / urls in the email body , Inject our click tracking url to that original link
 
