@@ -1,11 +1,13 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EmailForm
 from django.contrib import messages
 from .utils import send_email_notification
 from django.conf import settings
-from .models import Subscriber, Email, Sent
+from .models import Subscriber, Email, Sent, EmailTracking
 from .task import send_email_task
 from django.db.models import Sum
+from django.utils import timezone
 
 
 
@@ -68,9 +70,25 @@ def track_click(request , unique_id):
 
 
 
-def track_open(request):
+def track_open(request, unique_id):
     # Logic to store the tracking info
-    return
+    try:
+        email_tracking = EmailTracking.objects.get(unique_id=unique_id)
+        # check if thr opened_at field is already set or not
+        if not email_tracking.opened_at:
+            email_tracking.opened_at = timezone.now()
+            email_tracking.save()
+            return HttpResponse("Email Opened Successfully")
+        else:
+            return HttpResponse("Email Already Opened")
+    
+    except:
+        return HttpResponse("Email Tracking Record Not Found!")
+    
+        
+        
+
+
 
 
 
