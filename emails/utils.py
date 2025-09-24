@@ -28,7 +28,8 @@ def send_email_notification(mail_subject, message, to_email, attachment=None, em
                 base_url = settings.BASE_URL  # add your ngrok url here
                 # Generate the tracking pixel
                 click_tracking_url = f"{base_url}/emails/track/click/{unique_id}"
-                print('click_tracking_url ==>',click_tracking_url)
+                open_tracking_url = f"{base_url}/emails/track/open/{unique_id}"
+                #print('click_tracking_url ==>',click_tracking_url)
 
                 # Search for the link in email body
                 
@@ -39,6 +40,7 @@ def send_email_notification(mail_subject, message, to_email, attachment=None, em
                 """
                 # List comprehension method (above code)
                 urls = [ a['href'] for a in soup.find_all('a', href=True) ]
+                print('urls ==>',urls) # list of all urls in the email body
 
                 # If there are links / urls in the email body , Inject our click tracking url to that original link
                 if urls:
@@ -50,7 +52,15 @@ def send_email_notification(mail_subject, message, to_email, attachment=None, em
                         
                         new_message = new_message.replace(f"{url}", f"{tracking_url}") # Replace the existing url with tracking url in the email body
                 else:
+                    new_message = message
                     print("No URLs found in the email body.")
+
+                # create theemail content with open tracking pixel image
+                open_tracking_img = f'<img src="{open_tracking_url}" alt="" width="1" height="1" />'  # 1x1 pixel image
+
+                new_message += open_tracking_img  # append the open tracking image to the email body
+                
+
             else:
                 new_message = message
 
