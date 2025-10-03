@@ -1,6 +1,7 @@
 {% extends 'home/base.html' %}
 
-
+    {% block title %}Import Data{% endblock %}
+    
     {% block content %}
     <div class="container mt-5 shadow-lg custom-bg"> 
         <h3 class="sub-heading text-center pt-1">Import Data To Database Tables</h3>
@@ -28,7 +29,7 @@
             
         </form>  
          
-        {% include 'dataentry/alerts.html' %}
+        {% include 'alerts/alerts.html' %}
             
     </div>
     

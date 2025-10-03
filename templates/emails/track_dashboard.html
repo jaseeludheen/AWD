@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+
+{% block title %} Email Tracking {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center p-5">Email Engagement Tracking</h2>
+
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Subject</th>
+                <th scope="col">List</th>
+                <th scope="col">Total Sent</th>
+                <th scope="col">Events</th>
+                <th scope="col">Sent At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for email in emails %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td> <a href="{% url 'track_stats' email.id %}">{{ email.subject }}</a></td>
+                <td>{{ email.email_list }}</td>
+                <td>{{ email.total_sent}}</td>
+                <td>
+                    <div>0% Opened</div>
+                    <div>0% Clicked</div>
+                </td>
+                <td>{{ email.sent_at }}</td>
+            </tr>  
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

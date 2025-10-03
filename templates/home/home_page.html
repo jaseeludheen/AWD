@@ -1,46 +1,60 @@
-
 {% extends 'home/base.html' %}
 {% load static %}
+{% block title %}Home - AWD{% endblock %}
 {% block content %}
 
 <div class="container mt-4">
     <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <!-- Import Data -->
         <div class="col">
-            <div class="card h-100 import">
-                <a href="{% url 'import_data' %}" class="text-decoration-none text-dark">
+            <a href="{% url 'import_data' %}" class="text-decoration-none text-dark">
+                <div class="card h-100 import">
                     <div class="card-body">
                         <h5 class="card-title">Import Data</h5>
                         <p class="card-text">Imports data from CSV file to any table.</p>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
+
+        <!-- Export Data -->
         <div class="col">
-            <div class="card h-100 export">
-                <div class="card-body">
-                    <a href="{% url 'export_data' %}" class="text-decoration-none text-dark">
+            <a href="{% url 'export_data' %}" class="text-decoration-none text-dark">
+                <div class="card h-100 export">
+                    <div class="card-body">
                         <h5 class="card-title">Export Data</h5>
                         <p class="card-text">Exports data from a specific table to a CSV file.</p>
-                    </a>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
+
+        <!-- Bulk Emails -->
         <div class="col">
-            <div class="card h-100 emails">
-                <div class="card-body">
-                    <h5 class="card-title">Bulk Emails</h5>
-                    <p class="card-text">Sends bulk emails to users.</p>
+            <a href="{% url 'send_email' %}" class="text-decoration-none text-dark">
+                <div class="card h-100 emails">
+                    <div class="card-body">
+                        <h5 class="card-title">Bulk Emails</h5>
+                        <p class="card-text">Sends bulk emails to users.</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
+
+        <!-- Email Tracking -->
         <div class="col">
-            <div class="card h-100 tracking">
-                <div class="card-body">
-                    <h5 class="card-title">Email Tracking</h5>
-                    <p class="card-text">Tracks emails and shows open and click rate.</p>
+            <a href="{% url 'track_dashboard' %}" class="text-decoration-none text-dark">
+                <div class="card h-100 emails">
+                    <div class="card-body">
+                        <h5 class="card-title">Email Tracking</h5>
+                        <p class="card-text">Tracks emails and shows open and click rate.</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
+
+        
         <div class="col">
             <div class="card h-100 compress">
                 <div class="card-body">

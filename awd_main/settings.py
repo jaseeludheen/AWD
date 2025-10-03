@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',default=False, cast=bool)  # cast=bool reason: to convert the string value to a boolean
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # * means any website will run for this application
 
 
 # Application definition
@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'uploads',
     'crispy_forms',
     "crispy_bootstrap5",
+    'emails',
+    'ckeditor',
+    'anymail',
     
 ]
 
@@ -152,16 +155,17 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 
 
 # Email configuration
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')  # cast=int to convert the string value to an integer
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = True
 
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_PORT = config('EMAIL_PORT')  # cast=int to convert the string value to an integer
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+# DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 
@@ -169,3 +173,35 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = ["bootstrap5"]
+
+
+# CKEditor configuration
+CKEDITOR_CONFIGS = {
+    'default': {
+#       'toolbar': 'full',
+        'height': 200,
+#       'width': 300,
+    },
+}
+
+
+
+# brevo ( sendinblue ) email service configuration
+EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
+
+ANYMAIL = {
+    # (exact settings here depend on your ESP...)
+    "SENDINBLUE_API_KEY": config('BREVO_API_KEY'),
+}
+
+
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+#DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
+
+
+
+
+
+CSRF_TRUSTED_ORIGINS = [config('CSRF_TRUSTED_ORIGINS')]  # add your ngrok url here
+
+BASE_URL = config('BASE_URL')  # add your ngrok url here
