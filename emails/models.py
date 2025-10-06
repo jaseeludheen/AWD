@@ -37,6 +37,21 @@ class Email(models.Model):
         return self.subject
     
 
+    def open_rate(self):
+        total_sent = self.email_list.count_emails()
+        opened_count = EmailTracking.objects.filter(email=self, opened_at__isnull=False).count()
+
+        # Formula
+        open_rate = (opened_count/total_sent) * 100 if total_sent > 0 else 0
+        """
+        if total_sent > 0:
+            open_rate = (opened_count/total_sent) * 100
+        else:
+            open_rate = 0
+        """
+        return round(open_rate , 2)
+    
+
 
 class Sent(models.Model):
     email = models.ForeignKey(Email, on_delete=models.CASCADE, null=True, blank=True)
