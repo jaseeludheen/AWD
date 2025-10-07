@@ -51,6 +51,19 @@ class Email(models.Model):
         """
         return round(open_rate , 2)
     
+    def click_rate(self):
+        total_sent = self.email_list.count_emails()
+        opened_count = EmailTracking.objects.filter(email=self, opened_at__isnull=False).count()
+
+        if opened_count > 0 :
+            clicked_count = EmailTracking.objects.filter(email=self, clicked_at__isnull=False).count()
+            # Formula
+            click_rate = (clicked_count/opened_count) * 100 if total_sent > 0 else 0
+        else : 
+            click_rate = 0
+        return round(click_rate , 2)
+
+    
 
 
 class Sent(models.Model):
