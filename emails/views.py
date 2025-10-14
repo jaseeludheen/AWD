@@ -104,7 +104,7 @@ def track_open(request, unique_id):
 
 def track_dashboard(request):
 #   emails = Email.objects.all()
-    emails = Email.objects.all().annotate(total_sent=Sum('sent__total_sent')) # ('sent__total_sent') sent is related name in Sent model, total_sent is field name in Sent model, totat_sent is the new field name for each email instance
+    emails = Email.objects.all().annotate(total_sent=Sum('sent__total_sent')).order_by('-sent_at') # ('sent__total_sent') sent is related name in Sent model, total_sent is field name in Sent model, totat_sent is the new field name for each email instance , order by decendind set_at
     
     context = {
         'emails': emails,

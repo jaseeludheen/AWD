@@ -169,6 +169,8 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 
 
 
+
+
 # Crispy Forms configuration
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -196,7 +198,7 @@ ANYMAIL = {
 
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-#DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
+DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
 
 
 
