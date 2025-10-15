@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'emails',
     'ckeditor',
     'anymail',
+    'image_compression',
     
 ]
 
@@ -196,7 +197,7 @@ ANYMAIL = {
 
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-#DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
+DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
 
 
 
