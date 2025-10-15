@@ -55,6 +55,7 @@ def send_email_notification(mail_subject, message, to_email, attachment=None, em
                     new_message = message
                     print("No URLs found in the email body.")
 
+
                 # create theemail content with open tracking pixel image
                 open_tracking_img = f'<img src="{open_tracking_url}" alt="" width="1" height="1" />'  # 1x1 pixel image
 
@@ -65,7 +66,7 @@ def send_email_notification(mail_subject, message, to_email, attachment=None, em
                 new_message = message
 
 
-            mail = EmailMessage(mail_subject, new_message, from_email, to=[recipient_email])    # replce message with new_message - new_message will sent inside email body ,, to_email change to recipient_email
+            mail = EmailMessage(mail_subject, new_message, from_email, to=[recipient_email])    # replace message with new_message - new_message will sent inside email body ,, to_email change to recipient_email
             if attachment is not None:
                 mail.attach_file(attachment)
             

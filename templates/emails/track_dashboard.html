@@ -26,8 +26,8 @@
                 <td>{{ email.email_list }}</td>
                 <td>{{ email.total_sent}}</td>
                 <td>
-                    <div>0% Opened</div>
-                    <div>0% Clicked</div>
+                    <div>{{ email.open_rate }}% Opened</div>
+                    <div>{{ email.click_rate }}% Clicked</div>
                 </td>
                 <td>{{ email.sent_at }}</td>
             </tr>  

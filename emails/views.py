@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EmailForm
 from django.contrib import messages
@@ -65,8 +65,18 @@ def send_email(request):
 def track_click(request , unique_id):
     # Logic to store the tracking info
     print(request)
+    try:
+        email_tracking = EmailTracking.objects.get(unique_id=unique_id)
+        url = request.GET.get('url')
+        # check if thr clicked_at field is already set or not
+        if not email_tracking.clicked_at:
+            email_tracking.clicked_at = timezone.now()
+            email_tracking.save()
+            return HttpResponseRedirect(url)
+    except:
+        return HttpResponse("Email Tracking Record Not Found!")
 
-    return
+    
 
 
 
@@ -94,7 +104,7 @@ def track_open(request, unique_id):
 
 def track_dashboard(request):
 #   emails = Email.objects.all()
-    emails = Email.objects.all().annotate(total_sent=Sum('sent__total_sent')) # ('sent__total_sent') sent is related name in Sent model, total_sent is field name in Sent model, totat_sent is the new field name for each email instance
+    emails = Email.objects.all().annotate(total_sent=Sum('sent__total_sent')).order_by('-sent_at') # ('sent__total_sent') sent is related name in Sent model, total_sent is field name in Sent model, totat_sent is the new field name for each email instance , order by decendind set_at
     
     context = {
         'emails': emails,
