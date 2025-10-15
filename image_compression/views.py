@@ -42,7 +42,7 @@ def compress(request):
             #Atomatically download the compressed image
             response = HttpResponse(buffer.getvalue(), content_type=f'image/{output_format.lower()}')
             response['Content-Disposition'] = f'attachment; filename=compressed_{original_img}'
-            return response 
+            return response  # response
 #            return redirect('compress')
 
 
