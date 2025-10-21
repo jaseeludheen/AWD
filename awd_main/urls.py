@@ -37,8 +37,10 @@ urlpatterns = [
 
     # Include the URLs from the emails app
     path('emails/', include('emails.urls')),  
-     # Include the URLs from the image_compression app
+    # Include the URLs from the image_compression app
     path('image-compression/', include('image_compression.urls')),  
+    # Include the URLs from the stockanalysis app
+    path('stockanalysis/', include('stockanalysis.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)                             

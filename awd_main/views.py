@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import time
 from dataentry.tasks import celery_test_task, send_test_email_task
@@ -8,6 +9,7 @@ from django.shortcuts import redirect
 
 
 
+@login_required(login_url='login')
 def home(request):
     return render(request, 'home/home_page.html')
 

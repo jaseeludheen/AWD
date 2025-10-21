@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['*'] # * means any website will run for this application
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +49,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'anymail',
     'image_compression',
+    'stockanalysis',
+    
     
 ]
 
@@ -206,3 +210,8 @@ DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
 CSRF_TRUSTED_ORIGINS = [config('CSRF_TRUSTED_ORIGINS')]  # add your ngrok url here
 
 BASE_URL = config('BASE_URL')  # add your ngrok url here
+
+
+# Where to redirect users for login and after login
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'

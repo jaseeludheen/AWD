@@ -55,6 +55,7 @@
         </div>
 
         
+        <!-- Compress Images -->
         <div class="col">
             <a href="{% url 'compress' %}" class="text-decoration-none text-dark">
                 <div class="card h-100 compress">
@@ -65,14 +66,20 @@
                 </div>
             </a>
         </div>
+
+
+        <!-- Stockmarket Analysis -->
         <div class="col">
-            <div class="card h-100 scraping">
-                <div class="card-body">
-                    <h5 class="card-title">Web Scraping</h5>
-                    <p class="card-text">Scrapes websites for useful information.</p>
+            <a href="{% url 'stocks' %}" class="text-decoration-none text-dark">
+                <div class="card h-100 scraping">
+                    <div class="card-body">
+                        <h5 class="card-title">Stockmarket Analysis</h5>
+                        <p class="card-text">Stockmarket Analysis</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
+        
     </div>
 </div>
 

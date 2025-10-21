@@ -1,0 +1,58 @@
+{% extends "home/base.html" %}
+
+{% block title %}Stockmarket Analysis{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container mt-5">
+    <div class="form-box p-3 shadow rounded">
+        <h2 class="text-center mb-4">Stockmarket Analysis</h2>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="error-message">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <form method="post" action="{% url 'stocks' %}">
+            {% csrf_token %}
+  
+            <div class="form-group">
+                {{ form | crispy }}
+            </div>
+            
+            <div class="text-center mt-3">
+                <button type="submit" value="Get Info" class="btn btn-muted">Get Info</button>
+            </div>
+        </form>
+
+        {% include 'alerts/alerts.html' %}
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        {{ form.media}}
+
+        <!-- Select2 overrides (corrected selector and stronger rules). Placed after form.media so they take precedence) -->
+        <style>
+            /* Correct class name: select2-container (was misspelled as slect2-container) */
+            .select2-container .select2-selection--single {
+                height: 40px !important;
+                min-height: 40px !important;
+                box-sizing: border-box;
+            }
+            /* Ensure the rendered text is vertically centered */
+            .select2-container .select2-selection--single .select2-selection__rendered {
+                line-height: 40px !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+            /* Keep the dropdown arrow vertically aligned */
+            .select2-container .select2-selection--single .select2-selection__arrow {
+                height: 40px !important;
+            }
+        </style>
+        
+    </div>
+</div>
+
+
+{% endblock%}
