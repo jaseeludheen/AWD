@@ -12,12 +12,15 @@ click-repl==0.3.0
 crispy-bootstrap5==2025.6
 Django==5.2.1
 django-anymail==13.1
+django-autocomplete-light==3.12.1
 django-ckeditor==6.7.3
 django-crispy-forms==2.4
 django-js-asset==3.1.2
+gunicorn==23.0.0
 idna==3.10
 kombu==5.5.4
 packaging==25.0
+pillow==11.3.0
 prompt_toolkit==3.0.51
 python-dateutil==2.9.0.post0
 python-decouple==3.8
