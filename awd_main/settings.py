@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',default=False, cast=bool)  # cast=bool reason: to convert the string value to a boolean
 
-ALLOWED_HOSTS = ['*'] # * means any website will run for this application
+ALLOWED_HOSTS = ['.onrender.com'] # * means any website will run for this application
 
 
 # Application definition

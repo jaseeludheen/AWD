@@ -1,0 +1,50 @@
+/* Card Styles */
+.card {
+    border: none;
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+
+.import {
+    background-color: #e6f0fa;
+    border-left: 4px solid #3498db;
+}
+
+.export {
+    background-color: #e6f4e6;
+    border-left: 4px solid #2ecc71;
+}
+
+.emails {
+    background-color: #fceaea;
+    border-left: 4px solid #e74c3c;
+}
+
+.tracking {
+    background-color: #fef9e6;
+    border-left: 4px solid #f1c40f;
+}
+
+.compress {
+    background-color: #f4e6fa;
+    border-left: 4px solid #9b59b6;
+}
+
+.scraping {
+    background-color: #e6f2e6;
+    border-left: 4px solid #27ae60;
+}
+
+.card-title {
+    color: #1a2e44;
+}
+
+.card-text {
+    color: #7f8c8d;
+}
+
+a.text-white:hover {
+    color: #3498db;
+}
