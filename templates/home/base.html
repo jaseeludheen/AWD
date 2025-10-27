@@ -25,6 +25,9 @@
     <!-- Page-specific CSS -->
     {% block extra_css %}{% endblock %}
 
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/0c8b4191f0.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -49,8 +52,11 @@
                             <span class="logged-in-text">Logged in as <strong>{{ user }}</strong></span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link logout-btn" href="{% url 'logout' %}">Logout</a>
+                            <a class="nav-link " href="{% url 'logout' %}">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </a>
                         </li>
+                        
                         {% else %}
                         <li class="nav-item">
                             {% if request.path == '/login/' %}

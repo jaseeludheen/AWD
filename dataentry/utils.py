@@ -74,7 +74,7 @@ def check_csv_errors(file_path, model_name):
     return model # return the model if no errors found, so that it can be used in the import command
     
 
-"""
+
 def send_email_notification(mail_subject, message, to_email, attachment=None):  # attachment=None , set default 
     try:
         from_email = settings.DEFAULT_FROM_EMAIL
