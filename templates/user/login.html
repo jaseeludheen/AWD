@@ -1,6 +1,13 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 {% block title %}Login{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 
 {% block content %}
 {% load crispy_forms_tags %}
@@ -9,7 +16,7 @@
 
 
 <div class="container mt-5">
-    <div class="form-box p-3 shadow rounded">
+    <div class="form-box">
         <h2 class="text-center mb-4">Login</h2>
         {% if messages %}
         {% for message in messages %}
@@ -26,8 +33,8 @@
             <div class="text-center mt-3">
                 <button type="submit" value="Login" class="btn btn-muted">Login</button>
             </div>
-        </form>
 
+        </form>
         {% include 'alerts/alerts.html' %}
     </div>
 </div>

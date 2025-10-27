@@ -1,53 +1,56 @@
 {% extends "home/base.html" %}
+{% load static %}
 
 {% block title %}Stock Detail{% endblock %}
 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/stock_details.css' %}">
+{% endblock %}
+
 {% block content %}
    
-    <div class="container mt-5">
-        <div class="form-box p-3 shadow rounded">
-            <h2 class="text-center mb-4">{{stock_data.stock}} {{stock_data.symbol}}</h2>
-            <h3 style="font-weight: 900;"> {{ stock_data.current_price }}
-                <span class="{% if '-' in stock_data.price_change %}text-danger {% elif '+' in stock_data.price_change %} text-success {% endif %}" style="font-size:20px">{{ stock_data.price_change}}</span>
-                <span class="{% if '-' in stock_data.percentage_change %}text-danger {% elif '+' in stock_data.percentage_change %} text-success {% endif %}" style="font-size:20px">{{ stock_data.percentage_change}}</span>
-                <span style="font-size:16px; text-transform: uppercase"> {{ stock_data.stock.sector }}</span>
-            </h3>
-            <small>{{ stock_data.stock.exchange }} Listed - {{ stock_data.stock.country }}</small>
-            <hr>
-            <table class="table table-hover" style="margin: auto; max-width: 600px;">
-                <tbody>
-                    <tr>
-                        <td>Previous Close</td>
-                        <td>{{ stock_data.previous_close }}</td>
-                    </tr>
-                    <tr>
-                        <td>Market Cap</td>
-                        <td>{{ stock_data.market_cap }}</td>
-                    </tr>
-                    <tr>
-                        <td>PE Ratio</td>
-                        <td>{{ stock_data.pe_ratio }}</td>
-                    </tr>
-                    <tr>
-                        <td>Dividend Yield</td>
-                        <td>{{ stock_data.dividend_yield }}</td>
-                    </tr>
-                    <tr>
-                        <td>52 Week High</td>
-                        <td>{{ stock_data.week_52_high }}</td>
-                    </tr>
-                    <tr>
-                        <td>52 Week Low</td>
-                        <td>{{ stock_data.week_52_low }}</td>
-                    </tr>
-                </tbody>
-
-            </table>
-            <br>
-            <a href="{% url 'stocks' %}" class="btn btn-info">Check Another Stock </a>
-            
-
-        </div>
+<div class="container mt-5">
+    <div class="form-box p-3 shadow rounded">
+        <h2 class="text-center mb-4">{{stock_data.stock}} {{stock_data.symbol}}</h2>
+        <h3 style="font-weight: 900;"> {{ stock_data.current_price }}
+            <span class="{% if '-' in stock_data.price_change %}text-danger {% elif '+' in stock_data.price_change %} text-success {% endif %}" style="font-size:20px">{{ stock_data.price_change}}</span>
+            <span class="{% if '-' in stock_data.percentage_change %}text-danger {% elif '+' in stock_data.percentage_change %} text-success {% endif %}" style="font-size:20px">{{ stock_data.percentage_change}}</span>
+            <span style="font-size:16px; text-transform: uppercase"> {{ stock_data.stock.sector }}</span>
+        </h3>
+        <small>{{ stock_data.stock.exchange }} Listed - {{ stock_data.stock.country }}</small>
+        <hr>
+        <table class="table table-hover" style="margin: auto; max-width: 600px;">
+            <tbody>
+                <tr>
+                    <td>Previous Close</td>
+                    <td>{{ stock_data.previous_close }}</td>
+                </tr>
+                <tr>
+                    <td>Market Cap</td>
+                    <td>{{ stock_data.market_cap }}</td>
+                </tr>
+                <tr>
+                    <td>PE Ratio</td>
+                    <td>{{ stock_data.pe_ratio }}</td>
+                </tr>
+                <tr>
+                    <td>Dividend Yield</td>
+                    <td>{{ stock_data.dividend_yield }}</td>
+                </tr>
+                <tr>
+                    <td>52 Week High</td>
+                    <td>{{ stock_data.week_52_high }}</td>
+                </tr>
+                <tr>
+                    <td>52 Week Low</td>
+                    <td>{{ stock_data.week_52_low }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <a href="{% url 'stocks' %}" class="btn btn-info">Check Another Stock </a>
     </div>
+</div>
 
 {% endblock %} 

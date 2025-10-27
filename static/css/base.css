@@ -140,14 +140,6 @@ footer {
     background-color: #4b5563;
 }
 
-.custom-bg {
-    background-color: #1f2937;
-    color: #f1f5f9;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-
 input[type="file"].form-control,
 select.form-control {
     background-color: #111827;
@@ -247,4 +239,7 @@ select.form-control:focus {
 a.text-white:hover {
     color: #3498db;
 }
+
+
+
 

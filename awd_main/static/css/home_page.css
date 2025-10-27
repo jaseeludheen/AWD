@@ -1,29 +1,4 @@
-body {
-    background-color: #1c2331;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-header {
-    background-color: #1a2e44;
-    color: #cbd5e1;
-}
-
-.heading {
-    font-size: 2rem;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-footer {
-    background-color: #1a2e44;
-    color: #cbd5e1;
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
+/* Card Styles */
 .card {
     border: none;
     transition: transform 0.2s;
@@ -37,12 +12,10 @@ footer {
     border-left: 4px solid #3498db;
 }
 
-
 .export {
     background-color: #e6f4e6;
     border-left: 4px solid #2ecc71;
 }
-
 
 .emails {
     background-color: #fceaea;
@@ -54,7 +27,6 @@ footer {
     border-left: 4px solid #f1c40f;
 }
 
-
 .compress {
     background-color: #f4e6fa;
     border-left: 4px solid #9b59b6;
@@ -65,11 +37,9 @@ footer {
     border-left: 4px solid #27ae60;
 }
 
-
 .card-title {
     color: #1a2e44;
 }
-
 
 .card-text {
     color: #7f8c8d;
@@ -78,4 +48,3 @@ footer {
 a.text-white:hover {
     color: #3498db;
 }
-

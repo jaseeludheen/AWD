@@ -1,0 +1,147 @@
+
+
+/* Select2 dropdown background and text color */
+.select2-container--default .select2-results > .select2-results__options {
+    background-color: #1e2738 !important;  /* same as form box */
+    color: #ffffff !important;
+}
+
+/* Individual option styling */
+.select2-container--default .select2-results__option {
+    background-color: #1e2738 !important;
+    color: #ffffff !important;
+    padding: 8px 12px;
+}
+
+/* Highlight color when hovering/selecting an option */
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #4ECDC4 !important; /* your glow color */
+    color: #0b101b !important; /* dark text for contrast */
+}
+
+/* Border and background for the dropdown box itself */
+.select2-dropdown {
+    background-color: #1e2738 !important;
+    border: 1px solid #2b3648 !important;
+    border-radius: 8px !important;
+}
+
+
+
+
+
+
+
+
+
+/* Stock form container */
+.form-box {
+    background-color: #1e2738; /* dark blue-gray */
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Title with subtle glow */
+.text-glow {
+    color: #4ECDC4;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(78, 205, 196, 0.6);
+}
+
+/* Crispy form labels and inputs */
+.form-box label {
+    color: #C7D6D6;
+    font-weight: 500;
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea {
+    background-color: #121826;
+    color: #e5e9e9;
+    border: 1px solid #2b3648;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-box input:focus,
+.form-box select:focus,
+.form-box textarea:focus {
+    border-color: #4ECDC4;
+    box-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
+    outline: none;
+}
+
+/* Submit button */
+.btn-custom {
+    background-color: #4ECDC4;
+    color: #0b101b;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-custom:hover {
+    background-color: #6BE6DE;
+    transform: translateY(-2px);
+}
+
+/* Alert messages */
+.alert {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #FF6B6B;
+    border: 1px solid #FF6B6B;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Center container vertically for better look */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+
+/* Dropdown styling */
+.form-box select {
+    background-color: #1e2738; /* same as form box */
+    color: #ffffff; /* white text */
+    border: 1px solid #2b3648;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* On hover or focus */
+.form-box select:focus {
+    border-color: #4ECDC4;
+    box-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
+    outline: none;
+}
+
+/* Dropdown list (for modern browsers) */
+.form-box select option {
+    background-color: #1e2738; /* match dropdown panel */
+    color: #ffffff; /* white text */
+}
+
+/* Optional — lighter color when hovering over option (some browsers support it) */
+.form-box select option:hover {
+    background-color: #2b3648;
+}

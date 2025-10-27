@@ -1,6 +1,11 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block title %}Home - AWD{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+{% endblock %}
+
 {% block content %}
 
 <div class="container mt-4">

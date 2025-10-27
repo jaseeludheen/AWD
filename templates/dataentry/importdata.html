@@ -1,41 +1,47 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
-    {% block title %}Import Data{% endblock %}
-    
-    {% block content %}
-    <div class="container mt-5 shadow-lg custom-bg"> 
-        <h3 class="sub-heading text-center pt-1">Import Data To Database Tables</h3>
+{% block title %}Import Data{% endblock %}
 
-        <form action="{% url 'import_data' %}" method="post" enctype="multipart/form-data" style="max-width: 600px; margin: auto; padding-top: 50px;" >
-            {% csrf_token %}
-            <div class="form-group">
-                <label class="text" for="file_path">Upload CSV file</label>
-                <input type="file" name="file_path" class="form-control" required>
-            </div>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/import_data.css' %}">
+{% endblock %}
 
-            <div class="form-group">
-                <label class="text" for="model_name">Select Database Table</label>
-                <select name="model_name" class="form-control " required>
-                    <option value="" disabled selected>Select</option>
-                    {% for model in custom_models %}
-                        <option value="{{ model }}" >{{ model }}</option>
-                    {% endfor %}
-                </select>
-            </div>
 
-            <div class="form-group d-flex justify-content-center">
-                <input type="submit" value="Import data" class="btn btn-custom">
-            </div>
-            
-        </form>  
-         
-        {% include 'alerts/alerts.html' %}
-            
-    </div>
-    
-    {% endblock  %}
+{% block content %}
+<div class="container mt-5 shadow-lg custom-bg"> 
+    <h3 class="sub-heading text-center pt-1">Import Data To Database Tables</h3>
 
-  
+    <form action="{% url 'import_data' %}" method="post" enctype="multipart/form-data" style="max-width: 600px; margin: auto; padding-top: 50px;" >
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="text" for="file_path">Upload CSV file</label>
+            <input type="file" name="file_path" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label class="text" for="model_name">Select Database Table</label>
+            <select name="model_name" class="form-control " required>
+                <option value="" disabled selected>Select</option>
+                {% for model in custom_models %}
+                    <option value="{{ model }}" >{{ model }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group d-flex justify-content-center">
+            <input type="submit" value="Import data" class="btn btn-custom">
+        </div>
+        
+    </form>  
+        
+    {% include 'alerts/alerts.html' %}
+        
+</div>
+
+{% endblock  %}
+
+
 
 
 

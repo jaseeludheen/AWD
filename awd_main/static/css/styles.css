@@ -1,0 +1,154 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: #121826;
+    color: #C7D6D6;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #1a202c;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-brand.heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4ECDC4;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand.heading:hover {
+    color: #6BE6DE;
+}
+
+.nav-link {
+    color: #C7D6D6 !important;
+    font-size: 1.1rem;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #4ECDC4 !important;
+}
+
+.logged-in-text {
+    color: #E5E9E9;
+    font-size: 1rem;
+    margin-right: 15px;
+    padding-top: 8px;
+}
+
+.logout-btn {
+    background-color: #FF6B6B;
+    color: #000 !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background-color: #FF8787;
+    color: #1C2526 !important;
+}
+
+/* Main Content */
+main {
+    flex: 1;  
+    padding: 40px;
+}
+
+/* Footer Styling (Sticky) */
+footer {
+    background-color: #1a202c;
+    color: #C7D6D6;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-brand.heading {
+        font-size: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+
+    .logged-in-text {
+        font-size: 0.9rem;
+    }
+
+    main {
+        padding: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* Logged-in text */
+.logged-in-text {
+    color: #cbd5e0;
+    font-size: 14px;
+    margin-right: 15px;
+}
+
+/* Logout button styling */
+.logout-btn {
+    background-color: #bd3257;
+    color: #0b101b !important;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.logout-btn:hover {
+    background-color: #ff7e7e;
+    transform: translateY(-2px);
+}
+
+/* Logout icon color */
+.logout-btn i {
+    color: #0b101b;
+    font-size: 15px;
+}
+
+/* Navbar item alignment fix */
+.nav-item {
+    display: flex;
+    align-items: center;
+}

@@ -1,6 +1,12 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 {% block title %} Email Statistics {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/email_track_stats.css' %}">
+{% endblock %}
+
 
 {% block content %}
 

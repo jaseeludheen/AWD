@@ -215,3 +215,11 @@ BASE_URL = config('BASE_URL')  # add your ngrok url here
 # Where to redirect users for login and after login
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
+
+
+
+# Session expires after 15 minutes (900 seconds)
+SESSION_COOKIE_AGE = 900  # 15 * 60 seconds
+
+# Expire session when browser is closed (optional)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

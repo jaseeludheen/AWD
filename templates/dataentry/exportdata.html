@@ -1,34 +1,39 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
-    {% block title %}Export Data{% endblock %}
-    
-    {% block content %}
-    <div class="container mt-5 shadow-lg custom-bg"> 
-        <h3 class="heading text-center pt-1">Export Data From Database Tables</h3>
+{% block title %}Export Data{% endblock %}
 
-        <form action="{% url 'export_data' %}" method="post"  style="max-width: 600px; margin: auto; padding-top: 50px;" >
-            {% csrf_token %}
-            
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/export_data.css' %}">
+{% endblock %}
 
-            <div class="form-group">
-                <label for="model_name">Select Database Table</label>
-                <select name="model_name" class="form-control" required>
-                    <option value="" disabled selected>Select</option>
-                    {% for model in custom_models %}
-                        <option value="{{ model }}" >{{ model }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+{% block content %}
+<div class="container mt-5 shadow-lg "> 
+    <h3 class="heading text-center pt-1">Export Data From Database Tables</h3>
 
-            
-            <div class="form-group d-flex justify-content-center">
-                <input type="submit" value="Export data" class="btn btn-custom">
-            </div>
-            
-            {% include 'alerts/alerts.html' %}
+
+    <form class="container align-items-center pt-5" action="{% url 'export_data' %}" method="post" style="max-width: 400px;" >
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="model_name">Select Database Table</label>
+            <select name="model_name" class="form-control" required>
+                <option value="" disabled selected>Select</option>
+                {% for model in custom_models %}
+                    <option value="{{ model }}" >{{ model }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
         
-        </form>
-    </div>
-    {% endblock %}
+        <div class="form-group d-flex justify-content-center">
+            <input type="submit" value="Export data" class="btn btn-custom">
+        </div>
+        
+        {% include 'alerts/alerts.html' %}
+
+    
+    </form>
+</div>
+{% endblock %}
 

@@ -1,24 +1,23 @@
-/* Center register box vertically */
+/* Login page container */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 85vh;
+    min-height: 80vh;
 }
 
-/* Registration form box */
+/* Login box */
 .form-box {
-    background-color: #1e2738; /* dark navy-gray */
-    max-width: 450px;
+    background-color: #1e2738; /* dark navy box */
+    max-width: 420px;
     width: 100%;
     padding: 40px 30px;
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Title */
+/* Title style */
 .form-box h2 {
     color: #4ECDC4;
     font-weight: 700;
@@ -26,16 +25,13 @@
     text-shadow: 0 0 8px rgba(78, 205, 196, 0.5);
 }
 
-/* Form labels */
+/* Form field styles */
 .form-box label {
     color: #C7D6D6;
     font-weight: 500;
 }
 
-/* Input fields */
-.form-box input,
-.form-box select,
-.form-box textarea {
+.form-box input {
     background-color: #121826;
     color: #e5e9e9;
     border: 1px solid #2b3648;
@@ -45,16 +41,24 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Input focus effect */
-.form-box input:focus,
-.form-box select:focus,
-.form-box textarea:focus {
+.form-box input:focus {
     border-color: #4ECDC4;
     box-shadow: 0 0 8px rgba(78, 205, 196, 0.4);
     outline: none;
 }
 
-/* Submit button */
+/* Error message style */
+.error-message {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #FF6B6B;
+    border: 1px solid #FF6B6B;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Login button */
 .btn-muted {
     background-color: #4ECDC4;
     color: #0b101b;
@@ -70,33 +74,29 @@
     transform: translateY(-2px);
 }
 
-/* Error messages or alerts */
-.alert,
-.error-message {
-    background-color: rgba(255, 107, 107, 0.1);
-    color: #FF6B6B;
-    border: 1px solid #FF6B6B;
-    border-radius: 6px;
-    padding: 10px;
-    margin-bottom: 15px;
-    text-align: center;
+/* Register link */
+.text-center p {
+    color: #C7D6D6;
 }
+
+.text-center a {
+    color: #4ECDC4;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.text-center a:hover {
+    color: #6BE6DE;
+    text-decoration: underline;
+}
+
 
 /* Hover effect for the form box */
 .form-box:hover {
     box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
 }
 
-/* Responsive */
-@media (max-width: 576px) {
-    .form-box {
-        padding: 25px 20px;
-    }
-
-    .form-box h2 {
-        font-size: 1.5rem;
-    }
-}
 
 
 /* Keep input color consistent even when focused or autofilled */

@@ -1,6 +1,12 @@
 {% extends "home/base.html" %}
+{% load static %}
 
 {% block title %}Image Compression{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/image_compression.css' %}">
+{% endblock %}
+
 
 {% block content %}
 {% load crispy_forms_tags %}
@@ -13,8 +19,8 @@
             <div class="form-group">
                  {{ compress_form | crispy }} 
             </div>
-            <div class="from-group">
-                <input type="submit" value="Compress" class="btn btn-primary">
+            <div class="from-group pb-5 text-center">
+                <input type="submit" value="Compress" class="btn-custom">
             </div>
         </form>
         {% include 'alerts/alerts.html' %}

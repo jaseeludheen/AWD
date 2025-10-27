@@ -3,6 +3,10 @@
 
 {% block title %} Register {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
 
 {% block content %}
 {% load crispy_forms_tags %}
