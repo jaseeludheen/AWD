@@ -174,6 +174,8 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 
 
 
+
+
 # Crispy Forms configuration
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'

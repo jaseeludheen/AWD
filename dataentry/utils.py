@@ -84,45 +84,6 @@ def send_email_notification(mail_subject, message, to_email, attachment=None):  
         mail.send()
     except Exception as e:
         raise e
-"""
-"""
-
-def send_email_notification(mail_subject, message, to_email, attachment=None, email_id=None):  # attachment=None , set default 
-    try:
-        from_email = settings.DEFAULT_FROM_EMAIL
-
-        for recipient_email in to_email:
-            # Create EmailTracking  record
-            mail = EmailMessage(mail_subject, message, from_email, to=to_email)   
-            if attachment is not None:
-                mail.attach_file(attachment)
-            
-            mail.content_subtype = "html" # to send HTML email , to show html content in email body 
-            mail.send()
-
-    except Exception as e:
-        raise e
-"""
-
-
-def send_email_notification(mail_subject, message, to_email, attachment=None, email_id=None):  # attachment=None , set default 
-    try:
-        from_email = settings.DEFAULT_FROM_EMAIL
-
-        
-
-        mail = EmailMessage(mail_subject, message, from_email, to=[to_email])   
-        if attachment is not None:
-            mail.attach_file(attachment)
-        
-        
-        mail.content_subtype = "html" # to send HTML email , to show html content in email body 
-        mail.send()
-
-
-    except Exception as e:
-        raise e
-    
 
 
 
