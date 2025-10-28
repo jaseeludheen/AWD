@@ -27,8 +27,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',default=False, cast=bool)  # cast=bool reason: to convert the string value to a boolean
 
-ALLOWED_HOSTS = ['.onrender.com'] # * means any website will run for this application
-
+ALLOWED_HOSTS = ['*'] # * means any website will run for this application
+#ALLOWED_HOSTS = ['.onrender.com'] # * means any website will run for this application
 
 # Application definition
 
@@ -129,10 +129,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR /'static'
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+
+# Folder where collectstatic will put all static files (used in production)
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Folder(s) where Django looks for your static files in development
 STATICFILES_DIRS = [
-    'awd_main/static',
+    BASE_DIR / "static",   # your static folder in the root
 ]
 
 # Default primary key field type
